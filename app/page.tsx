@@ -43,9 +43,10 @@ export default function Page() {
       if (!res.ok || !j.ok) throw new Error(j.error || "Failed to send");
       setContactOk(true);
       form.reset();
-    } catch (err: any) {
+    } catch (err: unknown) {
       setContactOk(false);
-      setContactError(err.message || "Failed to send");
+      const message = err instanceof Error ? err.message : String(err);
+      setContactError(message || "Failed to send");
     } finally {
       setContactLoading(false);
     }
@@ -107,18 +108,18 @@ export default function Page() {
       <section className="section grid md:grid-cols-2 gap-10 items-center">
         <div className="space-y-7">
           <h1 className="text-4xl md:text-6xl font-semibold leading-relaxed space-y-1">
-            <span className="block">AI 도입,</span>
-            <span className="block">복잡하지 않습니다.</span>
+            <span className="block">아이디어 기획 2주,</span>
+            <span className="block">시제품 제작 2주.</span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-fuchsia-300">
-              2주 만에 시제품 제작
+              한 달 안에 사업
             </span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-fuchsia-300">
-              지금 시작하세요!
+              프로토타입 완성하기!
             </span>
           </h1>
 
           <p className="sub max-w-xl text-base">
-            진짜 AI 전문가가 기획부터 시제품, 소개 자료까지 원스톱으로 제공합니다.
+            AI 기반 사업 기획부터 시제품 제작, 소개 자료까지 원스톱으로 제공합니다.
           </p>
           <div className="flex gap-3">
             <a href="#contact" className="btn-primary">무료 컨설팅 신청</a>
@@ -133,7 +134,6 @@ export default function Page() {
           </div>
         </div>
 
-        {/* 데모 박스 */}
         {/* 데모 영상 박스 */}
         <div className="card p-2">
           <div className="relative aspect-video rounded-xl overflow-hidden ring-1 ring-white/10 shadow-[0_0_30px_rgba(0,0,0,0.4)]">
@@ -155,7 +155,7 @@ export default function Page() {
           <div className="grid place-items-center text-center rounded-xl bg-neutral-900 px-6 py-6 
             text-base md:text-lg text-neutral-200 font-medium
             hover:bg-neutral-800 hover:text-white transition-all duration-300">
-            어디서부터 AI를 시작해야 할지 모르겠습니다
+            어디서부터 AI를 도입해야 할지 모르겠습니다
           </div>
           <div className="grid place-items-center text-center rounded-xl bg-neutral-900 px-6 py-6 
             text-base md:text-lg text-neutral-200 font-medium
@@ -185,7 +185,7 @@ export default function Page() {
                   <h3 className="step-title">기획 컨설팅</h3>
                 </div>
                 <p className="step-sub mt-2">
-                  업무·산업 분석 후 적용 가능한 AI 시나리오 정의
+                  업무·산업 분석 후 적용 가능한 사업 시나리오 정의
                 </p>
                 <ul className="mt-3 text-sm text-neutral-300 list-disc list-inside space-y-1">
                   <li>산출물: AI 도입 기획서, UX 흐름</li>
@@ -354,8 +354,8 @@ export default function Page() {
       {/* Contact */}
       <section id="contact" className="section">
         <div className="card p-6">
-          <h2 className="h2">AI 도입, 지금 시작해보세요</h2>
-          <p className="sub mt-1">간단한 내용을 남겨주시면 1영업일 이내 회신드립니다.</p>
+          <h2 className="h2">사업 아이디어, 지금 실현해 보세요!</h2>
+          <p className="sub mt-1">간단한 내용을 남겨주시면 1 영업일 내 담당자가 직접 연락드립니다.</p>
           <form className="mt-6 grid md:grid-cols-2 gap-4" onSubmit={handleContactSubmit}>
             {/* honeypot (화면에 안보이게) */}
             <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />

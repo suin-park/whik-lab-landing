@@ -4,9 +4,31 @@ import { useEffect, useRef, useState } from "react";
 type Props = { open: boolean; onClose: () => void };
 type ChatMsg = { role: "user" | "ai"; text: string };
 
+// --- Chatbot copy: first message & follow-ups ---
+const FIRST_MESSAGE =
+  "안녕하세요, Whik AI Lab입니다.\n" +
+  "아이디어만 있으면 기획 2주, 시제품 2주로 한 달 안에 사업 프로토타입까지 함께 만듭니다.\n" +
+  "어떤 아이디어인지 간단하게 알려주세요.\n" +
+  "예) 의료 상담 챗봇, 여행 코스 자동 추천, 입점몰 3D 뷰어 등";
+
+const SECOND_PROMPT_PURPOSE_AUDIENCE_FEATURES =
+  "좋아요! 아이디어를 조금 더 이해하려고 해요. 아래 세 가지를 알려주세요.\n" +
+  "1) 목적: 어떤 문제를 해결하거나 어떤 성과를 내고 싶나요?\n" +
+  "2) 대상: 주요 사용자/고객은 누구인가요?\n" +
+  "3) 핵심 기능(2~3개): 꼭 들어가야 하는 기능을 적어주세요.\n" +
+  "답변 예시)\n" +
+  "목적: 온라인 상담 자동화 / 대상: 병원 방문 환자 / 핵심 기능: 증상 입력 챗봇, 의사 연결, 기록 대시보드";
+
+// 안전한 길이 체크 유틸
+function isTooShort(text: string) {
+  const t = (text || "").trim();
+  const words = t.split(/\s+/).filter(Boolean);
+  return t.length < 20 || words.length < 4; // 기준은 필요시 조정
+}
+
 export default function QuoteChatModal({ open, onClose }: Props) {
   const [messages, setMessages] = useState<ChatMsg[]>([
-    { role: "ai", text: "안녕하세요 👋 Whik AI Lab 견적 상담 도우미입니다.\n프로젝트 목적을 알려주세요. (예: 내부 업무 자동화 / 3D 콘텐츠 / 챗봇 등)" }
+    { role: "ai", text: FIRST_MESSAGE }
   ]);
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -26,12 +48,25 @@ export default function QuoteChatModal({ open, onClose }: Props) {
     e.preventDefault();
     if (!input.trim()) return;
     
-    // 사용자 메시지 추가
-    setMessages(prev => [...prev, { role: "user" as const, text: input.trim() }]);
     const userInput = input.trim();
+    
+    // 사용자 메시지 추가
+    setMessages(prev => [...prev, { role: "user" as const, text: userInput }]);
     setInput("");
     
-    // API 호출
+    // 첫 사용자 답변인지 확인 (현재 messages는 [AI 첫 메시지]만 있음)
+    const isFirstUserReply = messages.length === 1;
+    
+    // 첫 답변이 너무 짧으면 2번째 프롬프트 제공
+    if (isFirstUserReply && isTooShort(userInput)) {
+      setMessages(prev => [...prev, { 
+        role: "ai" as const, 
+        text: SECOND_PROMPT_PURPOSE_AUDIENCE_FEATURES 
+      }]);
+      return;
+    }
+    
+    // 충분한 답변이거나 후속 질문에 대한 답변인 경우 API 호출
     const res = await fetch("/api/quote", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
