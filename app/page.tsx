@@ -430,10 +430,7 @@ export default function Page() {
         <div className="flex flex-wrap items-center gap-4 justify-between border-t border-white/10 pt-6">
           <div>© Whik AI Lab</div>
           <div className="flex gap-4">
-            <a href="#">이용약관</a>
-            <a href="#">개인정보처리방침</a>
-            <a href="#">Whik Studio</a>
-            <a href="#">Whik 3D Converter</a>
+            <a href="#">Whik Company: http://whik.co.kr</a>
           </div>
         </div>
       </footer>
