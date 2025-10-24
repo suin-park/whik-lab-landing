@@ -239,7 +239,7 @@ export default function Page() {
 
       {/* Case Studies */}
       <section id="cases" className="section">
-        <h2 className="h2">아이디어를 눈에 보이는 형태로 만듭니다.</h2>
+        <h2 className="h2">아이디어를 눈에 보이는 형태로 만듭니다</h2>
         <div className="mt-6 grid md:grid-cols-3 gap-5">
           {cases.map((c) => {
             const disabled = c.disabled;
