@@ -73,11 +73,13 @@ export default function Page() {
               height={52}
               priority
               className="object-contain h-16 md:h-18 filter-none"
-              style={{
-                imageRendering: 'crisp-edges',
-                WebkitImageRendering: 'crisp-edges',
-                msInterpolationMode: 'nearest-neighbor'
-              }}
+              style={
+                {
+                  imageRendering: 'crisp-edges',
+                  WebkitImageRendering: 'crisp-edges',
+                  msInterpolationMode: 'nearest-neighbor',
+                } as React.CSSProperties
+              }
             />
           </Link>
 
@@ -246,7 +248,7 @@ export default function Page() {
                 key={c.t}
                 role={disabled ? undefined : "button"}
                 tabIndex={disabled ? -1 : 0}
-                onClick={disabled ? undefined : () => { setVideoId(c.videoId); setOpen(true); }}
+                onClick={disabled ? undefined : () => { setVideoId(c.videoId ?? null); setOpen(true); }}
                 className={`card overflow-hidden transition ${
                   disabled
                     ? "opacity-60 cursor-not-allowed"
