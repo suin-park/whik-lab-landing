@@ -2,9 +2,10 @@
 import { useEffect, useRef, useState } from "react";
 
 type Props = { open: boolean; onClose: () => void };
+type ChatMsg = { role: "user" | "ai"; text: string };
 
 export default function QuoteChatModal({ open, onClose }: Props) {
-  const [messages, setMessages] = useState<{role:"ai"|"user"; text:string}[]>([
+  const [messages, setMessages] = useState<ChatMsg[]>([
     { role: "ai", text: "안녕하세요 👋 Whik AI Lab 견적 상담 도우미입니다.\n프로젝트 목적을 알려주세요. (예: 내부 업무 자동화 / 3D 콘텐츠 / 챗봇 등)" }
   ]);
   const [input, setInput] = useState("");
@@ -24,16 +25,24 @@ export default function QuoteChatModal({ open, onClose }: Props) {
   async function send(e: React.FormEvent) {
     e.preventDefault();
     if (!input.trim()) return;
-    const next = [...messages, { role: "user", text: input.trim() }];
-    setMessages(next);
+    
+    // 사용자 메시지 추가
+    setMessages(prev => [...prev, { role: "user" as const, text: input.trim() }]);
+    const userInput = input.trim();
     setInput("");
+    
+    // API 호출
     const res = await fetch("https://whik.co.kr/api/quote", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ messages: next }),
+      body: JSON.stringify({ 
+        messages: [...messages, { role: "user", text: userInput }]
+      }),
     });
     const data = await res.json();
-    setMessages([...next, { role: "ai", text: data.reply }]);
+    
+    // AI 응답 추가
+    setMessages(prev => [...prev, { role: "ai" as const, text: data.reply }]);
   }
 
   return (

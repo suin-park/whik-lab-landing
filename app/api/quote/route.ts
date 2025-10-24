@@ -31,15 +31,15 @@ export async function POST(req: NextRequest) {
 
     const history = messages.map(m => ({
       role: m.role === "ai" ? ("assistant" as const) : ("user" as const),
+      name: m.role, // 타입 충돌 방지
       content: m.text,
     }));
 
     const apiMessages: ChatCompletionMessageParam[] = [
-      { role: "system", content: systemContent },
+      { role: "system", name: "system", content: systemContent },
       ...history,
     ];
 
-    // @ts-expect-error openai types sometimes mismatch across minor versions
     const rsp = await client.chat.completions.create({
       model: "gpt-4o-mini",
       messages: apiMessages,
