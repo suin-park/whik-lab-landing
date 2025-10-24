@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "destination": "https://ai.whik.co.kr/:path*",
+      "permanent": true,
+      "has": [
+        {
+          "type": "host",
+          "value": "www.ai.whik.co.kr"
+        }
+      ]
+    }
+  ]
+}
+
