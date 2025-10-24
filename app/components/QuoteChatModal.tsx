@@ -32,7 +32,7 @@ export default function QuoteChatModal({ open, onClose }: Props) {
     setInput("");
     
     // API 호출
-    const res = await fetch("https://whik.co.kr/api/quote", {
+    const res = await fetch("/api/quote", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ 

@@ -3,6 +3,9 @@ import OpenAI from "openai";
 import type { ChatCompletionMessageParam } from "openai/resources/chat/completions";
 import { z } from "zod";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 // Request Body 스키마
 const Msg = z.object({
   role: z.string(),
@@ -13,9 +16,14 @@ const Body = z.object({
   messages: z.array(Msg),
 });
 
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+function getOpenAI() {
+  const k = process.env.OPENAI_API_KEY;
+  if (!k) throw new Error("OPENAI_API_KEY not set");
+  return new OpenAI({ apiKey: k });
+}
 
 export async function POST(req: NextRequest) {
+  const client = getOpenAI();
   try {
     const body = Body.parse(await req.json());
     const { messages } = body;
