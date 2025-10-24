@@ -428,9 +428,9 @@ export default function Page() {
       {/* Footer */}
       <footer className="section pt-0 text-sm text-neutral-500">
         <div className="flex flex-wrap items-center gap-4 justify-between border-t border-white/10 pt-6">
-          <div>© Whik AI Lab</div>
+          <div>© Whik lnc.</div>
           <div className="flex gap-4">
-            <a href="#">Whik Company: http://whik.co.kr</a>
+            <a href="#">http://whik.co.kr</a>
           </div>
         </div>
       </footer>

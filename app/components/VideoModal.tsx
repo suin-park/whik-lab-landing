@@ -47,3 +47,4 @@ export default function VideoModal({ open, onClose, videoId }: Props) {
   );
 }
 
+
