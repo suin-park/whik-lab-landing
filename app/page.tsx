@@ -76,7 +76,7 @@ export default function Page() {
   const cases: CaseCard[] = [
     { t: "사진 한 장 → 3D 모델 자동 생성", s: "AI 이미지 분석 및 뎁스 추출 / AR 연동", videoId: "03eeHR_qX5E", img: "/case/case-3d.png" },
     { t: "AI로 웹툰 제작 자동화", s: "AI 스토리 가이드, 제작 가이드, AI 프롬프트 추천", videoId: "6rCVn3087DM", img: "/case/case-webtoon.png" },
-    { t: "AI를 활용한 견적,계약 및 프로젝트 관리", s: "반복적인 견적/계약/프로젝트 관리의 자동화", gallery: "works", img: "/case/case-works.png" },
+    { t: "AI를 활용한 견적, 계약 및 프로젝트 관리", s: "반복적인 견적/계약/프로젝트 관리의 자동화", gallery: "works", img: "/case/case-works.png" },
   ];
   return (
     <main className="space-y-24 md:space-y-32 pt-6">
