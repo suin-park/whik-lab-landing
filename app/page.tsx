@@ -62,7 +62,18 @@ export default function Page() {
     }
   }
 
-  const cases = [
+  // 카드 타입 선언: disabled, videoId, gallery 모두 선택(optional)
+  type CaseCard = {
+    t: string;              // 타이틀
+    s: string;              // 서브텍스트
+    img: string;            // 썸네일 경로
+    videoId?: string;       // 비디오 모달용
+    gallery?: "works";      // 갤러리 모달용
+    disabled?: boolean;     // 비활성 카드
+  };
+
+  // cases를 명시적으로 타입 지정
+  const cases: CaseCard[] = [
     { t: "사진 한 장 → 3D 모델 자동 생성", s: "AI 이미지 분석 및 뎁스 추출 / AR 연동", videoId: "03eeHR_qX5E", img: "/case/case-3d.png" },
     { t: "AI로 웹툰 제작 자동화", s: "AI 스토리 가이드, 제작 가이드, AI 프롬프트 추천", videoId: "6rCVn3087DM", img: "/case/case-webtoon.png" },
     { t: "AI를 활용한 견적,계약 및 프로젝트 관리", s: "반복적인 견적/계약/프로젝트 관리의 자동화", gallery: "works", img: "/case/case-works.png" },
@@ -252,54 +263,54 @@ export default function Page() {
         <h2 className="h2">아이디어를 눈에 보이는 형태로 만듭니다</h2>
         <div className="mt-6 grid md:grid-cols-3 gap-5">
           {cases.map((c) => {
-            const disabled = c.disabled;
+            const disabled = !!c.disabled;
+
             return (
-              <article
-                key={c.t}
-                role={disabled ? undefined : "button"}
-                tabIndex={disabled ? -1 : 0}
-                onClick={
-                  disabled
-                    ? undefined
-                    : () => {
-                        if ((c as any).gallery === "works") {
-                          setGalleryOpen(true);
-                        } else {
-                          setVideoId(c.videoId ?? null);
-                          setOpen(true);
-                        }
-                      }
-                }
-                className={`card overflow-hidden transition ${
-                  disabled
-                    ? "opacity-60 cursor-not-allowed"
-                    : "cursor-pointer hover:translate-y-[-2px]"
-                }`}
-                aria-label={
-                  disabled
-                    ? undefined
-                    : (c as any).gallery === "works"
-                      ? "Whik Works 갤러리 보기"
-                      : `${c.t} 시연 보기`
-                }
-              >
-                <div className="aspect-video relative">
-                  <Image
-                    src={c.img}
-                    alt={c.t}
-                    fill
-                    className="object-cover"
-                  />
-                  {disabled && (
-                    <span className="absolute top-3 right-3 px-2 py-1 text-xs rounded-lg bg-white/15 border border-white/20">
-                      Coming soon
-                    </span>
-                  )}
-                </div>
-                <div className="p-4">
-                  <div className="font-medium">{c.t}</div>
-                  <div className="sub text-sm">{c.s}</div>
-                </div>
+              <article key={c.t}>
+                <button
+                  disabled={disabled}
+                  onClick={() => {
+                    if (disabled) return;
+                    if (c.gallery === "works") {
+                      setGalleryOpen(true);
+                      return;
+                    }
+                    if (c.videoId) {
+                      setVideoId(c.videoId);
+                      setOpen(true);
+                    }
+                  }}
+                  aria-label={
+                    disabled
+                      ? `${c.t}는 준비 중`
+                      : c.gallery === "works"
+                        ? "Whik Works 갤러리 보기"
+                        : `${c.t} 시연 보기`
+                  }
+                  className={`relative w-full card overflow-hidden transition ${
+                    disabled
+                      ? "opacity-60 cursor-not-allowed"
+                      : "cursor-pointer hover:translate-y-[-2px]"
+                  }`}
+                >
+                  <div className="aspect-video relative">
+                    <Image
+                      src={c.img}
+                      alt={c.t}
+                      fill
+                      className="object-cover"
+                    />
+                    {disabled && (
+                      <span className="absolute top-3 right-3 px-2 py-1 text-xs rounded-lg bg-white/15 border border-white/20">
+                        Coming soon
+                      </span>
+                    )}
+                  </div>
+                  <div className="p-4 text-left">
+                    <div className="font-medium">{c.t}</div>
+                    <div className="sub text-sm">{c.s}</div>
+                  </div>
+                </button>
               </article>
             );
           })}
