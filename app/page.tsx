@@ -5,11 +5,21 @@ import Image from "next/image";
 import FAQ from "./components/FAQ";
 import VideoModal from "./components/VideoModal";
 import QuoteChatModal from "./components/QuoteChatModal";
+import ImageCarouselModal from "./components/ImageCarouselModal";
 
 export default function Page() {
   const [open, setOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const [videoId, setVideoId] = useState<string | null>(null);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+
+  const worksImages = [
+    { src: "/case/work_1.png", alt: "Whik Works 1" },
+    { src: "/case/work_2.png", alt: "Whik Works 2" },
+    { src: "/case/work_3.png", alt: "Whik Works 3" },
+    { src: "/case/work_4.png", alt: "Whik Works 4" },
+    { src: "/case/work_5.png", alt: "Whik Works 5" },
+  ];
   
   // Contact form state
   const [contactLoading, setContactLoading] = useState(false);
@@ -53,9 +63,9 @@ export default function Page() {
   }
 
   const cases = [
-    { t: "사진 한 장 → 3D 모델 자동 생성", s: "제품 가상 배치, AR/뷰어 연동", videoId: "03eeHR_qX5E", img: "/case/case-3d.png" },
-    { t: "AI로 웹툰 제작 자동화", s: "프롬프트 가이드, 레이어·핀 기반 모션", videoId: "6rCVn3087DM", img: "/case/case-webtoon.png" },
-    { t: "관광/헬스 PoC", s: "다국어 번역, 대화형 안내, 자동 요약", disabled: true, img: "/case/case-health.png" },
+    { t: "사진 한 장 → 3D 모델 자동 생성", s: "AI 이미지 분석 및 뎁스 추출 / AR 연동", videoId: "03eeHR_qX5E", img: "/case/case-3d.png" },
+    { t: "AI로 웹툰 제작 자동화", s: "AI 스토리 가이드, 제작 가이드, AI 프롬프트 추천", videoId: "6rCVn3087DM", img: "/case/case-webtoon.png" },
+    { t: "AI를 활용한 견적,계약 및 프로젝트 관리", s: "반복적인 견적/계약/프로젝트 관리의 자동화", gallery: "works", img: "/case/case-works.png" },
   ];
   return (
     <main className="space-y-24 md:space-y-32 pt-6">
@@ -248,13 +258,30 @@ export default function Page() {
                 key={c.t}
                 role={disabled ? undefined : "button"}
                 tabIndex={disabled ? -1 : 0}
-                onClick={disabled ? undefined : () => { setVideoId(c.videoId ?? null); setOpen(true); }}
+                onClick={
+                  disabled
+                    ? undefined
+                    : () => {
+                        if ((c as any).gallery === "works") {
+                          setGalleryOpen(true);
+                        } else {
+                          setVideoId(c.videoId ?? null);
+                          setOpen(true);
+                        }
+                      }
+                }
                 className={`card overflow-hidden transition ${
                   disabled
                     ? "opacity-60 cursor-not-allowed"
                     : "cursor-pointer hover:translate-y-[-2px]"
                 }`}
-                aria-label={disabled ? undefined : `${c.t} 시연 보기`}
+                aria-label={
+                  disabled
+                    ? undefined
+                    : (c as any).gallery === "works"
+                      ? "Whik Works 갤러리 보기"
+                      : `${c.t} 시연 보기`
+                }
               >
                 <div className="aspect-video relative">
                   <Image
@@ -424,6 +451,12 @@ export default function Page() {
         videoId={videoId ?? "03eeHR_qX5E"}
       />
       <QuoteChatModal open={chatOpen} onClose={()=>setChatOpen(false)} />
+      <ImageCarouselModal
+        open={galleryOpen}
+        onClose={() => setGalleryOpen(false)}
+        images={worksImages}
+        startIndex={0}
+      />
 
       {/* Footer */}
       <footer className="section pt-0 text-sm text-neutral-500">
