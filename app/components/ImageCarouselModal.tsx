@@ -78,7 +78,7 @@ export default function ImageCarouselModal({ open, onClose, images, startIndex =
             onClose();
           }}
           aria-label="닫기"
-          className="fixed left-3 top-[max(env(safe-area-inset-top),12px)] md:left-auto md:right-6 md:top-6
+          className="fixed right-3 top-[max(env(safe-area-inset-top),12px)] md:right-6 md:top-6
                      rounded-full bg-black/60 backdrop-blur border border-white/25 px-4 py-2
                      text-sm text-white shadow-lg active:scale-[0.98] z-[60]"
         >
@@ -141,12 +141,13 @@ export default function ImageCarouselModal({ open, onClose, images, startIndex =
           {images.map((_, i) => (
             <button
               key={i}
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
                 setIdx(i);
               }}
               aria-label={`슬라이드 ${i + 1}`}
-              className={`h-2.5 w-2.5 rounded-full transition ${i === idx ? "bg-white" : "bg-white/45"}`}
+              className={`w-2.5 h-2.5 flex-none shrink-0 rounded-full transition-opacity ${i === idx ? "bg-white opacity-100" : "bg-white/45 opacity-70"}`}
             />
           ))}
         </div>

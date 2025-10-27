@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { staggerContainer, fadeUp, fadeUpSlow, hoverLift } from "./components/motionPresets";
 import FAQ from "./components/FAQ";
 import VideoModal from "./components/VideoModal";
 import QuoteChatModal from "./components/QuoteChatModal";
@@ -126,9 +128,15 @@ export default function Page() {
       </header>
 
       {/* Hero */}
-      <section className="section grid md:grid-cols-2 gap-10 items-center">
+      <motion.section
+        variants={staggerContainer(0.05, 0.08)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="section grid md:grid-cols-2 gap-10 items-center"
+      >
         <div className="space-y-7">
-          <h1 className="text-4xl md:text-6xl font-semibold leading-relaxed space-y-1">
+          <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-semibold leading-relaxed space-y-1">
             <span className="block">아이디어 기획 2주,</span>
             <span className="block">시제품 제작 2주.</span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-fuchsia-300">
@@ -137,26 +145,26 @@ export default function Page() {
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-fuchsia-300">
               프로토타입 완성하기!
             </span>
-          </h1>
+          </motion.h1>
 
-          <p className="sub max-w-xl text-base">
+          <motion.p variants={fadeUpSlow} className="sub max-w-xl text-base">
             AI 기반 사업 기획부터 시제품 제작, 소개 자료까지 원스톱으로 제공합니다.
-          </p>
-          <div className="flex gap-3">
+          </motion.p>
+          <motion.div variants={fadeUpSlow} className="flex gap-3">
             <a href="#contact" className="btn-primary">무료 컨설팅 신청</a>
             <button type="button" onClick={()=>setChatOpen(true)} className="btn-ghost" aria-label="AI 견적 상담 챗봇 열기">
               AI 상담 챗봇
             </button>
-          </div>
+          </motion.div>
 
           {/* 신뢰 라인 */}
-          <div className="flex items-center gap-3 pt-3 text-xs text-neutral-400">
+          <motion.div variants={fadeUpSlow} className="flex items-center gap-3 pt-3 text-xs text-neutral-400">
             <div className="h-px w-10 bg-white/20" /> Made with Whik Company
-          </div>
+          </motion.div>
         </div>
 
         {/* 데모 영상 박스 */}
-        <div className="card p-2">
+        <motion.div variants={fadeUpSlow} className="card p-2">
           <div className="relative aspect-video rounded-xl overflow-hidden ring-1 ring-white/10 shadow-[0_0_30px_rgba(0,0,0,0.4)]">
             <iframe
               className="absolute inset-0 w-full h-full"
@@ -166,38 +174,63 @@ export default function Page() {
               allowFullScreen
             />
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* Problems */}
-      <section className="section">
-        <h2 className="h2">많은 기업이 이런 고민을 합니다</h2>
+      <motion.section
+        variants={staggerContainer(0.05, 0.07)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.35 }}
+        className="section"
+      >
+        <motion.h2 variants={fadeUp} className="h2">많은 기업이 이런 고민을 합니다</motion.h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <div className="grid place-items-center text-center rounded-xl bg-neutral-900 px-6 py-6 
+          <motion.div
+            variants={fadeUp}
+            {...hoverLift}
+            className="grid place-items-center text-center rounded-xl bg-neutral-900 px-6 py-6 
             text-base md:text-lg text-neutral-200 font-medium
-            hover:bg-neutral-800 hover:text-white transition-all duration-300">
+            hover:bg-neutral-800 hover:text-white transition-all duration-300"
+          >
             어디서부터 AI를 도입해야 할지 모르겠습니다
-          </div>
-          <div className="grid place-items-center text-center rounded-xl bg-neutral-900 px-6 py-6 
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            {...hoverLift}
+            className="grid place-items-center text-center rounded-xl bg-neutral-900 px-6 py-6 
             text-base md:text-lg text-neutral-200 font-medium
-            hover:bg-neutral-800 hover:text-white transition-all duration-300">
+            hover:bg-neutral-800 hover:text-white transition-all duration-300"
+          >
             내부에 개발 리소스가 부족합니다
-          </div>
-          <div className="grid place-items-center text-center rounded-xl bg-neutral-900 px-6 py-6 
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            {...hoverLift}
+            className="grid place-items-center text-center rounded-xl bg-neutral-900 px-6 py-6 
             text-base md:text-lg text-neutral-200 font-medium
-            hover:bg-neutral-800 hover:text-white transition-all duration-300">
+            hover:bg-neutral-800 hover:text-white transition-all duration-300"
+          >
             투자자·고객에게 보여줄 시제품이 필요합니다
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Solution */}
-      <section id="services" className="section">
-        <h2 className="h2">Whik의 3단계 패키지로 해결합니다</h2>
+      <motion.section
+        variants={staggerContainer(0.05, 0.06)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        id="services"
+        className="section"
+      >
+        <motion.h2 variants={fadeUp} className="h2">Whik의 3단계 패키지로 해결합니다</motion.h2>
 
         <div className="mt-6 grid md:grid-cols-3 gap-5">
           {/* 1) 기획 컨설팅 */}
-          <article className="card-ring p-5">
+          <motion.article variants={fadeUp} className="card-ring p-5">
             <div className="flex items-start gap-4">
               <span className="step-badge">1</span>
               <div className="flex-1">
@@ -214,10 +247,10 @@ export default function Page() {
                 </ul>
               </div>
             </div>
-          </article>
+          </motion.article>
 
           {/* 2) 시제품 제작(PoC) */}
-          <article className="card-ring p-5">
+          <motion.article variants={fadeUp} className="card-ring p-5">
             <div className="flex items-start gap-4">
               <span className="step-badge">2</span>
               <div className="flex-1">
@@ -234,10 +267,10 @@ export default function Page() {
                 </ul>
               </div>
             </div>
-          </article>
+          </motion.article>
 
           {/* 3) 소개 자료 제작 */}
-          <article className="card-ring p-5">
+          <motion.article variants={fadeUp} className="card-ring p-5">
             <div className="flex items-start gap-4">
               <span className="step-badge">3</span>
               <div className="flex-1">
@@ -254,20 +287,28 @@ export default function Page() {
                 </ul>
               </div>
             </div>
-          </article>
+          </motion.article>
         </div>
-      </section>
+      </motion.section>
 
       {/* Case Studies */}
-      <section id="cases" className="section">
-        <h2 className="h2">아이디어를 눈에 보이는 형태로 만듭니다</h2>
+      <motion.section
+        variants={staggerContainer(0.05, 0.08)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.35 }}
+        id="cases"
+        className="section"
+      >
+        <motion.h2 variants={fadeUp} className="h2">아이디어를 눈에 보이는 형태로 만듭니다</motion.h2>
         <div className="mt-6 grid md:grid-cols-3 gap-5">
           {cases.map((c) => {
             const disabled = !!c.disabled;
 
             return (
-              <article key={c.t}>
-                <button
+              <motion.article key={c.t} variants={fadeUp}>
+                <motion.button
+                  {...(!disabled ? hoverLift : {})}
                   disabled={disabled}
                   onClick={() => {
                     if (disabled) return;
@@ -290,7 +331,7 @@ export default function Page() {
                   className={`relative w-full card overflow-hidden transition ${
                     disabled
                       ? "opacity-60 cursor-not-allowed"
-                      : "cursor-pointer hover:translate-y-[-2px]"
+                      : "cursor-pointer"
                   }`}
                 >
                   <div className="aspect-video relative">
@@ -310,16 +351,23 @@ export default function Page() {
                     <div className="font-medium">{c.t}</div>
                     <div className="sub text-sm">{c.s}</div>
                   </div>
-                </button>
-              </article>
+                </motion.button>
+              </motion.article>
             );
           })}
         </div>
-      </section>
+      </motion.section>
 
       {/* Process + Pricing */}
-      <section id="process" className="section">
-        <h2 className="h2">프로세스와 비용 구조</h2>
+      <motion.section
+        variants={staggerContainer(0.05, 0.06)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        id="process"
+        className="section"
+      >
+        <motion.h2 variants={fadeUp} className="h2">프로세스와 비용 구조</motion.h2>
 
         {/* 타임라인 */}
         <ol className="mt-6 grid md:grid-cols-6 gap-4">
@@ -331,8 +379,9 @@ export default function Page() {
             "소개 자료",
             "전달/검수",
           ].map((step, i, arr) => (
-            <li
+            <motion.li
               key={step}
+              variants={fadeUp}
               className="group relative card p-4 flex flex-col items-center justify-center text-center gap-2
                          hover:translate-y-[-2px]"
             >
@@ -361,37 +410,51 @@ export default function Page() {
                              bg-gradient-to-r from-white/30 to-white/0"
                 />
               )}
-            </li>
+            </motion.li>
           ))}
         </ol>
 
         {/* 비용 피처 콜아웃 */}
-        <div className="mt-5 grid md:grid-cols-3 gap-4 text-sm">
+        <motion.div
+          variants={staggerContainer(0.1, 0.07)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.5 }}
+          className="mt-5 grid md:grid-cols-3 gap-4 text-sm"
+        >
           {[
             { color: "bg-sky-300/80", title: "착수금 30%", desc: "기획 컨설팅" },
             { color: "bg-emerald-300/80", title: "중도금 40%", desc: "시제품 제작" },
             { color: "bg-fuchsia-300/80", title: "잔금 30%", desc: "소개 자료 제작" },
           ].map((item) => (
-            <div
+            <motion.div
               key={item.title}
+              variants={fadeUp}
               className="card p-4 flex flex-col items-center justify-center text-center gap-2"
             >
               <div className={`w-2 h-2 rounded-full ${item.color}`} />
               <div className="font-medium">{item.title}</div>
               <div className="sub">{item.desc}</div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* 안내 문구 */}
-        <p className="sub text-xs mt-3">
+        <motion.p variants={fadeUpSlow} className="sub text-xs mt-3">
           * 업종·범위에 따라 견적이 달라질 수 있습니다. 상세 내용은 미팅에서 안내드립니다.
-        </p>
-      </section>
+        </motion.p>
+      </motion.section>
 
       {/* Contact */}
-      <section id="contact" className="section">
-        <div className="card p-6">
+      <motion.section
+        variants={staggerContainer(0.05, 0.07)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.35 }}
+        id="contact"
+        className="section"
+      >
+        <motion.div variants={fadeUp} className="card p-6">
           <h2 className="h2">사업 아이디어, 지금 실현해 보세요!</h2>
           <p className="sub mt-1">간단한 내용을 남겨주시면 1 영업일 내 담당자가 직접 연락드립니다.</p>
           <form className="mt-6 grid md:grid-cols-2 gap-4" onSubmit={handleContactSubmit}>
@@ -449,8 +512,8 @@ export default function Page() {
               )}
             </div>
           </form>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
       {/* FAQ */}
       <FAQ />
