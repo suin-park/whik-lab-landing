@@ -71,12 +71,13 @@ export default function Page() {
     img: string;            // 썸네일 경로
     videoId?: string;       // 비디오 모달용
     gallery?: "works";      // 갤러리 모달용
+    href?: string;          // 외부 링크
     disabled?: boolean;     // 비활성 카드
   };
 
   // cases를 명시적으로 타입 지정
   const cases: CaseCard[] = [
-    { t: "사진 한 장 → 3D 모델 자동 생성", s: "AI 이미지 분석 및 뎁스 추출 / AR 연동", videoId: "03eeHR_qX5E", img: "/case/case-3d.png" },
+    { t: "사진 한 장 → 3D 모델 자동 생성", s: "AI 이미지 분석 및 뎁스 추출 / AR 연동", href: "https://3d-locker.com", img: "/3d-thumb2.png" },
     { t: "AI로 웹툰 제작 자동화", s: "AI 스토리 가이드, 제작 가이드, AI 프롬프트 추천", videoId: "6rCVn3087DM", img: "/case/case-webtoon.png" },
     { t: "AI를 활용한 견적, 계약 및 프로젝트 관리", s: "반복적인 견적/계약/프로젝트 관리의 자동화", gallery: "works", img: "/case/case-works.png" },
   ];
@@ -159,22 +160,67 @@ export default function Page() {
 
           {/* 신뢰 라인 */}
           <motion.div variants={fadeUpSlow} className="flex items-center gap-3 pt-3 text-xs text-neutral-400">
-            <div className="h-px w-10 bg-white/20" /> Made with Whik Company
+            <div className="h-px w-10 bg-white/20" /> Made with Whik Lab
           </motion.div>
         </div>
 
-        {/* 데모 영상 박스 */}
-        <motion.div variants={fadeUpSlow} className="card p-2">
-          <div className="relative aspect-video rounded-xl overflow-hidden ring-1 ring-white/10 shadow-[0_0_30px_rgba(0,0,0,0.4)]">
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/03eeHR_qX5E?rel=0&modestbranding=1"
-              title="Whik Demo"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
+        {/* 3D Locker 카드 */}
+        <motion.a
+          href="https://3d-locker.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          variants={fadeUpSlow}
+          className="card p-0 overflow-hidden group block cursor-pointer"
+          {...hoverLift}
+        >
+          {/* 이미지 영역 */}
+          <div className="relative w-full aspect-[16/9] overflow-hidden">
+            <Image
+              src="/3d-thumb2.png"
+              alt="3D Locker"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
-        </motion.div>
+          
+          {/* 정보 영역 */}
+          <div className="p-6 md:p-8 space-y-4">
+            {/* 상단: 로고와 배지 */}
+            <div className="flex items-center justify-between">
+              <div className="relative w-32 h-8 md:w-36 md:h-9">
+                <Image
+                  src="/logo_white.svg"
+                  alt="3D Locker"
+                  fill
+                  className="object-contain object-left"
+                  priority
+                />
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-300/10 border border-sky-300/20">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-300 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-300"></span>
+                </span>
+                <span className="text-xs md:text-sm font-medium text-sky-300">공식 오픈</span>
+              </div>
+            </div>
+            
+            {/* 제목과 설명 */}
+            <div className="space-y-2">
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold leading-tight">
+                이미지 한 장으로 시작하는
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-fuchsia-300">완전한 3D 워크플로우</span>
+              </h3>
+              <p className="text-sm md:text-base text-neutral-400 leading-relaxed">
+                AI 기반 3D 생성부터 AR, 프린팅까지 하나로 연결
+              </p>
+            </div>
+          </div>
+        </motion.a>
       </motion.section>
 
       {/* Problems */}
@@ -312,6 +358,10 @@ export default function Page() {
                   disabled={disabled}
                   onClick={() => {
                     if (disabled) return;
+                    if (c.href) {
+                      window.open(c.href, "_blank", "noopener,noreferrer");
+                      return;
+                    }
                     if (c.gallery === "works") {
                       setGalleryOpen(true);
                       return;

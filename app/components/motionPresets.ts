@@ -21,3 +21,14 @@ export const fadeUpSlow: Variants = {
 
 export const hoverLift = { whileHover: { y: -2 }, whileTap: { scale: 0.98 } };
 
+
+
+
+
+
+
+
+
+
+
+
