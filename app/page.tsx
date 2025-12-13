@@ -134,7 +134,7 @@ export default function Page() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="section grid md:grid-cols-2 gap-10 items-center"
+        className="section pt-2 md:pt-20 pb-14 md:pb-20 grid md:grid-cols-2 gap-10 items-center"
       >
         <div className="space-y-7">
           <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-semibold leading-relaxed space-y-1">
