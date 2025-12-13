@@ -179,7 +179,7 @@ export default function Page() {
               src="/3d-thumb2.png"
               alt="3D Locker"
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              className="object-cover object-left-top transition-transform duration-700 group-hover:scale-110"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
@@ -389,7 +389,7 @@ export default function Page() {
                       src={c.img}
                       alt={c.t}
                       fill
-                      className="object-cover"
+                      className={c.img === "/3d-thumb2.png" || c.img === "/case/case-webtoon.png" ? "object-cover object-left-top" : "object-cover"}
                     />
                     {disabled && (
                       <span className="absolute top-3 right-3 px-2 py-1 text-xs rounded-lg bg-white/15 border border-white/20">
