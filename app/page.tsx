@@ -77,9 +77,9 @@ export default function Page() {
 
   // cases를 명시적으로 타입 지정
   const cases: CaseCard[] = [
-    { t: "사진 한 장 → 3D 모델 자동 생성", s: "AI 이미지 분석 및 뎁스 추출 / AR 연동", href: "https://3d-locker.com", img: "/3d-thumb2.png" },
-    { t: "AI로 웹툰 제작 자동화", s: "AI 스토리 가이드, 제작 가이드, AI 프롬프트 추천", videoId: "6rCVn3087DM", img: "/case/case-webtoon.png" },
-    { t: "AI를 활용한 견적, 계약 및 프로젝트 관리", s: "반복적인 견적/계약/프로젝트 관리의 자동화", gallery: "works", img: "/case/case-works.png" },
+    { t: "제품 사진으로 3D 시제품 제작", s: "3D Locker처럼 실제 구현 가능한 사례", href: "https://3d-locker.com", img: "/3d-thumb2.png" },
+    { t: "AI로 콘텐츠 제작 흐름 정리", s: "기획·제작 가이드와 프롬프트까지", videoId: "6rCVn3087DM", img: "/case/case-webtoon.png" },
+    { t: "반복 업무를 줄이는 운영 자동화", s: "견적·계약·프로젝트 관리 자동화", gallery: "works", img: "/case/case-works.png" },
   ];
   return (
     <main className="space-y-24 md:space-y-32 pt-6">
@@ -138,18 +138,15 @@ export default function Page() {
       >
         <div className="space-y-7">
           <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-semibold leading-relaxed space-y-1">
-            <span className="block">아이디어 기획 2주,</span>
-            <span className="block">시제품 제작 2주.</span>
+            <span className="block">AI 서비스,</span>
+            <span className="block">빠르게 검증하고</span>
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-fuchsia-300">
-              한 달 안에 사업
-            </span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-fuchsia-300">
-              프로토타입 완성하기!
+              시작하세요
             </span>
           </motion.h1>
 
           <motion.p variants={fadeUpSlow} className="sub max-w-xl text-base">
-            AI 기반 사업 기획부터 시제품 제작, 소개 자료까지 원스톱으로 제공합니다.
+            챗봇, 자동화, 3D, 콘텐츠 제작까지. 필요한 핵심 기능부터 빠르게 구현합니다.
           </motion.p>
           <motion.div variants={fadeUpSlow} className="flex gap-3">
             <a href="#contact" className="btn-primary">무료 컨설팅 신청</a>
@@ -211,12 +208,12 @@ export default function Page() {
             {/* 제목과 설명 */}
             <div className="space-y-2">
               <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold leading-tight">
-                이미지 한 장으로 시작하는
+                제품 사진 한 장으로 시작하는
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-fuchsia-300">완전한 3D 워크플로우</span>
               </h3>
               <p className="text-sm md:text-base text-neutral-400 leading-relaxed">
-                AI 기반 3D 생성부터 AR, 프린팅까지 하나로 연결
+                3D 생성부터 AR·프린팅까지 한 번에 연결
               </p>
             </div>
           </div>
@@ -240,7 +237,7 @@ export default function Page() {
             text-base md:text-lg text-neutral-200 font-medium
             hover:bg-neutral-800 hover:text-white transition-all duration-300"
           >
-            어디서부터 AI를 도입해야 할지 모르겠습니다
+            어디서부터 시작해야 할지 모르겠습니다
           </motion.div>
           <motion.div
             variants={fadeUp}
@@ -249,7 +246,7 @@ export default function Page() {
             text-base md:text-lg text-neutral-200 font-medium
             hover:bg-neutral-800 hover:text-white transition-all duration-300"
           >
-            내부에 개발 리소스가 부족합니다
+            내부 개발 리소스가 부족합니다
           </motion.div>
           <motion.div
             variants={fadeUp}
@@ -258,7 +255,7 @@ export default function Page() {
             text-base md:text-lg text-neutral-200 font-medium
             hover:bg-neutral-800 hover:text-white transition-all duration-300"
           >
-            투자자·고객에게 보여줄 시제품이 필요합니다
+            고객에게 보여줄 시제품이 필요합니다
           </motion.div>
         </div>
       </motion.section>
@@ -272,7 +269,7 @@ export default function Page() {
         id="services"
         className="section"
       >
-        <motion.h2 variants={fadeUp} className="h2">Whik의 3단계 패키지로 해결합니다</motion.h2>
+        <motion.h2 variants={fadeUp} className="h2">Whik은 이렇게 빠르게 만듭니다</motion.h2>
 
         <div className="mt-6 grid md:grid-cols-3 gap-5">
           {/* 1) 기획 컨설팅 */}
@@ -282,14 +279,14 @@ export default function Page() {
               <div className="flex-1">
                 <div className="flex items-center gap-3">
                   <div className="step-icon">🧭</div>
-                  <h3 className="step-title">기획 컨설팅</h3>
+                  <h3 className="step-title">기획 정리</h3>
                 </div>
                 <p className="step-sub mt-2">
-                  업무·산업 분석 후 적용 가능한 사업 시나리오 정의
+                  무엇을 만들지 짧고 명확하게 정리합니다
                 </p>
                 <ul className="mt-3 text-sm text-neutral-300 list-disc list-inside space-y-1">
-                  <li>산출물: AI 도입 기획서, UX 흐름</li>
-                  <li>워크숍: 킥오프/요구사항 정리</li>
+                  <li>산출물: 기획 요약, UX 흐름</li>
+                  <li>정리: 요구사항·우선순위</li>
                 </ul>
               </div>
             </div>
@@ -302,13 +299,13 @@ export default function Page() {
               <div className="flex-1">
                 <div className="flex items-center gap-3">
                   <div className="step-icon">⚙️</div>
-                  <h3 className="step-title">시제품 제작(PoC)</h3>
+                  <h3 className="step-title">시제품 제작</h3>
                 </div>
                 <p className="step-sub mt-2">
-                  핵심 기능을 작동하는 데모로 구현
+                  핵심 기능이 작동하는 MVP를 빠르게 만듭니다
                 </p>
                 <ul className="mt-3 text-sm text-neutral-300 list-disc list-inside space-y-1">
-                  <li>산출물: 웹/앱 데모, 시연 영상</li>
+                  <li>산출물: 웹/앱 데모, 시연</li>
                   <li>옵션: 샌드박스·목업 연동</li>
                 </ul>
               </div>
@@ -322,14 +319,14 @@ export default function Page() {
               <div className="flex-1">
                 <div className="flex items-center gap-3">
                   <div className="step-icon">🗂️</div>
-                  <h3 className="step-title">소개 자료 제작</h3>
+                  <h3 className="step-title">소개 자료 정리</h3>
                 </div>
                 <p className="step-sub mt-2">
-                  내부 보고·투자 제안용 문서와 페이지 제작
+                  고객과 투자자에게 보여줄 자료까지 준비합니다
                 </p>
                 <ul className="mt-3 text-sm text-neutral-300 list-disc list-inside space-y-1">
-                  <li>산출물: 제안서 PDF, 요약 랜딩</li>
-                  <li>브랜딩: 썸네일/에셋 제공</li>
+                  <li>산출물: 제안서, 요약 자료</li>
+                  <li>제공: 썸네일·에셋</li>
                 </ul>
               </div>
             </div>
@@ -346,7 +343,7 @@ export default function Page() {
         id="cases"
         className="section"
       >
-        <motion.h2 variants={fadeUp} className="h2">아이디어를 눈에 보이는 형태로 만듭니다</motion.h2>
+        <motion.h2 variants={fadeUp} className="h2">아이디어를 실제 화면으로 보여드립니다</motion.h2>
         <div className="mt-6 grid md:grid-cols-3 gap-5">
           {cases.map((c) => {
             const disabled = !!c.disabled;
@@ -417,17 +414,17 @@ export default function Page() {
         id="process"
         className="section"
       >
-        <motion.h2 variants={fadeUp} className="h2">프로세스와 비용 구조</motion.h2>
+        <motion.h2 variants={fadeUp} className="h2">프로세스와 진행 방식</motion.h2>
 
         {/* 타임라인 */}
         <ol className="mt-6 grid md:grid-cols-6 gap-4">
           {[
             "상담 접수",
-            "킥오프",
-            "기획서",
-            "시제품",
-            "소개 자료",
-            "전달/검수",
+            "기획 정리",
+            "범위 확정",
+            "시제품 제작",
+            "자료 정리",
+            "전달 및 검수",
           ].map((step, i, arr) => (
             <motion.li
               key={step}
@@ -443,12 +440,12 @@ export default function Page() {
                 <span className="font-medium">{step}</span>
                 <p className="sub text-xs text-neutral-400">
                   {[
-                    "요구 사항 브리핑 / 일정 조율",
-                    "목표·범위 정의 / 레퍼런스 정리",
-                    "UX 흐름·기능 명세 초안",
-                    "작동 데모(PoC) 제작",
-                    "내부 보고·투자 제안 자료",
-                    "납품·피드백 반영",
+                    "상담 내용 확인·일정 조율",
+                    "핵심 목표·요구사항 정리",
+                    "범위·우선순위 확정",
+                    "MVP 형태로 빠르게 구현",
+                    "소개 자료·정리본 준비",
+                    "전달·피드백 반영",
                   ][i]}
                 </p>
               </div>
@@ -491,7 +488,7 @@ export default function Page() {
 
         {/* 안내 문구 */}
         <motion.p variants={fadeUpSlow} className="sub text-xs mt-3">
-          * 업종·범위에 따라 견적이 달라질 수 있습니다. 상세 내용은 미팅에서 안내드립니다.
+          처음부터 크게 만들지 않고, 핵심 기능부터 단계적으로 제작합니다.
         </motion.p>
       </motion.section>
 
@@ -505,8 +502,8 @@ export default function Page() {
         className="section"
       >
         <motion.div variants={fadeUp} className="card p-6">
-          <h2 className="h2">사업 아이디어, 지금 실현해 보세요!</h2>
-          <p className="sub mt-1">간단한 내용을 남겨주시면 1 영업일 내 담당자가 직접 연락드립니다.</p>
+          <h2 className="h2">아이디어가 있다면, 먼저 가볍게 상담해보세요</h2>
+          <p className="sub mt-1">간단한 내용을 남겨주시면 확인 후 연락드립니다.</p>
           <form className="mt-6 grid md:grid-cols-2 gap-4" onSubmit={handleContactSubmit}>
             {/* honeypot (화면에 안보이게) */}
             <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
@@ -555,7 +552,7 @@ export default function Page() {
               </button>
               
               {contactOk === true && (
-                <span className="text-emerald-400 text-sm">문의가 접수되었습니다! 곧 연락드리겠습니다.</span>
+                <span className="text-emerald-400 text-sm">문의가 접수되었습니다. 확인 후 연락드리겠습니다.</span>
               )}
               {contactOk === false && (
                 <span className="text-red-400 text-sm">전송 실패: {contactError}</span>

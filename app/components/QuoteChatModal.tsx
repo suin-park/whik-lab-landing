@@ -7,15 +7,15 @@ type ChatMsg = { role: "user" | "ai"; text: string };
 // --- Chatbot copy: first message & follow-ups ---
 const FIRST_MESSAGE =
   "안녕하세요, Whik AI Lab입니다.\n" +
-  "아이디어만 있으면 기획 2주, 시제품 2주로 한 달 안에 사업 프로토타입까지 함께 만듭니다.\n" +
-  "어떤 아이디어인지 간단하게 알려주세요.\n" +
-  "예) 의료 상담 챗봇, 여행 코스 자동 추천, 입점몰 3D 뷰어 등";
+  "핵심 기능부터 빠르게 MVP로 만들어 먼저 검증할 수 있어요.\n" +
+  "무엇을 만들고 싶은지 한 줄로 알려주세요.\n" +
+  "예) 상담 챗봇, 운영 자동화, 3D 시제품(3D Locker), 콘텐츠 제작";
 
 const SECOND_PROMPT_PURPOSE_AUDIENCE_FEATURES =
-  "좋아요! 아이디어를 조금 더 이해하려고 해요. 아래 세 가지를 알려주세요.\n" +
-  "1) 목적: 어떤 문제를 해결하거나 어떤 성과를 내고 싶나요?\n" +
+  "좋아요. 아래 3가지만 알려주시면 됩니다.\n" +
+  "1) 목적: 어떤 결과를 원하시나요?\n" +
   "2) 대상: 주요 사용자/고객은 누구인가요?\n" +
-  "3) 핵심 기능(2~3개): 꼭 들어가야 하는 기능을 적어주세요.\n" +
+  "3) 핵심 기능(2~3개): 꼭 필요한 기능을 적어주세요.\n" +
   "답변 예시)\n" +
   "목적: 온라인 상담 자동화 / 대상: 병원 방문 환자 / 핵심 기능: 증상 입력 챗봇, 의사 연결, 기록 대시보드";
 
@@ -104,7 +104,7 @@ export default function QuoteChatModal({ open, onClose }: Props) {
         <form onSubmit={send} className="flex gap-2 p-3 border-t border-white/10">
           <input
             className="flex-1 rounded-xl px-3 py-2 bg-white/10 border border-white/10"
-            placeholder="원하시는 결과/기간/예산 대략을 알려주세요…"
+            placeholder="원하시는 결과와 핵심 기능을 알려주세요…"
             value={input}
             onChange={(e)=>setInput(e.target.value)}
           />
@@ -112,7 +112,7 @@ export default function QuoteChatModal({ open, onClose }: Props) {
         </form>
 
         <div className="px-4 pb-3 text-xs text-neutral-400">
-          결과가 마음에 드시면 <a href="#contact" className="underline">문의 폼</a>으로 바로 이어서 제출해 주세요.
+          괜찮다면 <a href="#contact" className="underline">문의 폼</a>으로 이어서 제출해 주세요.
         </div>
       </div>
     </div>
