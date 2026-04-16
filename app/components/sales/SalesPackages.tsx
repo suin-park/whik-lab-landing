@@ -34,7 +34,7 @@ export default function SalesPackages() {
               {tier.features.map((f) => (
                 <li key={f} className="flex gap-2">
                   <span className="text-emerald-400/90 shrink-0">✓</span>
-                  <span>{f}</span>
+                  <span className="whitespace-pre-line leading-relaxed">{f}</span>
                 </li>
               ))}
             </ul>

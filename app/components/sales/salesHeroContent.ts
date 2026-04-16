@@ -9,7 +9,7 @@ export const salesHeroContent = {
   includes: [
     "1페이지 랜딩페이지 제작",
     "SNS 대표 비주얼 1종",
-    "간단한 판매 현황 페이지 제작",
+    "랜딩 페이지 유입 데이터 대시보드 제공",
     "자료 수령 후 3영업일 제작",
   ],
   noticePrimary: "수정 1회 포함",
@@ -25,7 +25,7 @@ export const salesHeroContent = {
     blocks: [
       { key: "landing", title: "판매 랜딩", micro: "제품 소개 / CTA" },
       { key: "sns", title: "SNS 비주얼", micro: "카드형 대표 이미지" },
-      { key: "dashboard", title: "판매 현황 확인 보드", micro: "판매 현황 확인 대시보드 구현" },
+      { key: "dashboard", title: "랜딩 페이지 데이터 대시보드", micro: "랜딩 페이지 유입 데이터 페이지 구현" },
     ],
   },
 } as const;
