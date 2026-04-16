@@ -2,7 +2,9 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 
-const faqs = [
+export type FaqQA = { q: string; a: string };
+
+const DEFAULT_FAQS: FaqQA[] = [
   {
     q: "AI 개발자가 없어도 가능한가요?",
     a: "가능합니다. 기획 정리부터 시제품 제작까지 함께 진행합니다.",
@@ -24,36 +26,35 @@ const faqs = [
     a: "가능합니다. 핵심 가설을 정리하고, 먼저 시제품으로 빠르게 검증합니다.",
   },
   {
-  q: "지분형(Equity-for-Service) 진행도 가능한가요?",
-  a: "가능합니다. 조건(지분·IP·베스팅)은 상담 후 상호 합의로 확정합니다."
+    q: "지분형(Equity-for-Service) 진행도 가능한가요?",
+    a: "가능합니다. 조건(지분·IP·베스팅)은 상담 후 상호 합의로 확정합니다.",
   },
   {
-  q: "미팅은 어떻게 진행되나요?",
-  a: "대면 또는 Zoom으로 진행합니다. 일정과 방식은 협의해 조정합니다."
+    q: "미팅은 어떻게 진행되나요?",
+    a: "대면 또는 Zoom으로 진행합니다. 일정과 방식은 협의해 조정합니다.",
   },
 ];
 
-export default function FAQ() {
+type FAQProps = {
+  title?: string;
+  items?: readonly FaqQA[] | FaqQA[];
+  id?: string;
+};
+
+export default function FAQ({ title = "자주 묻는 질문 (FAQ)", items = DEFAULT_FAQS, id = "faq" }: FAQProps) {
   const [open, setOpen] = useState<number | null>(null);
+  const list = [...items];
 
   return (
-    <section id="faq" className="section">
-      <h2 className="h2">자주 묻는 질문 (FAQ)</h2>
+    <section id={id} className="section">
+      <h2 className="h2">{title}</h2>
       <div className="mt-6 space-y-3">
-        {faqs.map((item, i) => (
-          <div
-            key={i}
-            className={`faq-item ${open === i ? "open" : ""}`}
-          >
-            <button
-              className="faq-q"
-              onClick={() => setOpen(open === i ? null : i)}
-            >
+        {list.map((item, i) => (
+          <div key={`${item.q}-${i}`} className={`faq-item ${open === i ? "open" : ""}`}>
+            <button type="button" className="faq-q" onClick={() => setOpen(open === i ? null : i)}>
               <span>{item.q}</span>
               <ChevronDown
-                className={`w-5 h-5 transition-transform ${
-                  open === i ? "rotate-180" : "rotate-0"
-                }`}
+                className={`w-5 h-5 shrink-0 transition-transform ${open === i ? "rotate-180" : "rotate-0"}`}
               />
             </button>
             {open === i && <div className="faq-a">{item.a}</div>}
@@ -63,22 +64,3 @@ export default function FAQ() {
     </section>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
