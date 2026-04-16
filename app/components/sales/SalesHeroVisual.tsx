@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, MessageCircle, Play, ShoppingBag, Globe, Sparkles } from "lucide-react";
 import { fadeUp, fadeUpSlow } from "../motionPresets";
+import { salesHero } from "../../data/salesPageContent";
 
 function FlowPill({ children }: { children: React.ReactNode }) {
   return (
@@ -47,7 +48,7 @@ export default function SalesHeroVisual() {
 
       <div className="relative space-y-5">
         <motion.div variants={fadeUp} className="flex items-center justify-between gap-3">
-          <div className="text-sm font-medium text-neutral-300">작게 시작하는 판매 구조</div>
+          <div className="text-sm font-medium text-neutral-300">{salesHero.visualTitle}</div>
           <div className="hidden sm:flex items-center gap-2 text-[11px] text-neutral-500">
             <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 px-2 py-1">
               <Sparkles className="w-3.5 h-3.5 text-emerald-200" aria-hidden />
@@ -65,7 +66,7 @@ export default function SalesHeroVisual() {
             </span>
           </FlowPill>
           <Arrow />
-          <FlowPill>판매용 페이지</FlowPill>
+          <FlowPill>소개 페이지</FlowPill>
           <Arrow />
           <FlowPill>
             <span className="inline-flex items-center gap-2">
@@ -80,10 +81,6 @@ export default function SalesHeroVisual() {
               문의 연결
             </span>
           </FlowPill>
-          <Arrow />
-          <div className="px-3 py-2 rounded-xl border border-emerald-400/25 bg-emerald-400/10 text-sm text-emerald-100">
-            판매 시작
-          </div>
         </motion.div>
 
         {/* Mock outputs */}
