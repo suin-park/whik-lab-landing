@@ -24,9 +24,8 @@ export default function SalesHero({ onOpenChat }: Props) {
   return (
     <motion.section
       variants={staggerContainer(0.05, 0.08)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
+      initial="show"
+      animate="show"
       className="section pt-4 md:pt-12 pb-16 md:pb-20 mb-0 grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-start"
     >
       <div className="space-y-4 md:space-y-5 max-w-xl">

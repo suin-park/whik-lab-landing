@@ -62,9 +62,8 @@ export default function ContactConsultSection({
   return (
     <motion.section
       variants={staggerContainer(0.05, 0.07)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.35 }}
+      initial="show"
+      animate="show"
       id={id}
       className="section"
     >

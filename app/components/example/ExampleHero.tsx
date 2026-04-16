@@ -17,9 +17,8 @@ export default function ExampleHero({ product, onAddToCart, onBuyNow, onRequestP
   return (
     <motion.section
       variants={staggerContainer(0.05, 0.07)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      initial="show"
+      animate="show"
       className="section pt-1 md:pt-3 pb-8 md:pb-10"
       aria-label="제품 요약"
     >

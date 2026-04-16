@@ -8,9 +8,8 @@ export default function ExampleHighlights({ summary }: { summary: ExampleProduct
   return (
     <motion.section
       variants={staggerContainer(0.04, 0.05)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.35 }}
+      initial="show"
+      animate="show"
       className="section pt-0"
       aria-label="구매 포인트 요약"
     >

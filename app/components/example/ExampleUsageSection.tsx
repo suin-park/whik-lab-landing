@@ -45,9 +45,8 @@ export default function ExampleUsageSection({
   return (
     <motion.section
       variants={staggerContainer(0.05, 0.06)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.25 }}
+      initial="show"
+      animate="show"
       className="section"
       aria-label="사용 방법 및 추천 대상"
     >

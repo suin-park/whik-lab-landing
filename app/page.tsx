@@ -91,9 +91,8 @@ export default function Page() {
       {/* Hero */}
       <motion.section
         variants={staggerContainer(0.05, 0.08)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
+        initial="show"
+        animate="show"
         className="section pt-2 md:pt-20 pb-14 md:pb-20 grid md:grid-cols-2 gap-10 items-center"
       >
         <div className="space-y-7">
@@ -186,9 +185,8 @@ export default function Page() {
       {/* Problems */}
       <motion.section
         variants={staggerContainer(0.05, 0.07)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.35 }}
+        initial="show"
+        animate="show"
         className="section"
       >
         <motion.h2 variants={fadeUp} className="h2">많은 기업이 이런 고민을 합니다</motion.h2>
@@ -226,9 +224,8 @@ export default function Page() {
       {/* Solution */}
       <motion.section
         variants={staggerContainer(0.05, 0.06)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
+        initial="show"
+        animate="show"
         id="services"
         className="section"
       >
@@ -300,9 +297,8 @@ export default function Page() {
       {/* Case Studies */}
       <motion.section
         variants={staggerContainer(0.05, 0.08)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.35 }}
+        initial="show"
+        animate="show"
         id="cases"
         className="section"
       >
@@ -371,9 +367,8 @@ export default function Page() {
       {/* Process + Pricing */}
       <motion.section
         variants={staggerContainer(0.05, 0.06)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
+        initial="show"
+        animate="show"
         id="process"
         className="section"
       >
@@ -427,9 +422,8 @@ export default function Page() {
         {/* 비용 피처 콜아웃 */}
         <motion.div
           variants={staggerContainer(0.1, 0.07)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.5 }}
+          initial="show"
+          animate="show"
           className="mt-5 grid md:grid-cols-3 gap-4 text-sm"
         >
           {[

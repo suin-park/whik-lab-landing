@@ -10,9 +10,8 @@ export default function SalesAudience() {
     <motion.section
       id="audience"
       variants={staggerContainer(0.05, 0.07)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.35 }}
+      initial="show"
+      animate="show"
       className="section"
     >
       <motion.h2 variants={fadeUp} className="h2">

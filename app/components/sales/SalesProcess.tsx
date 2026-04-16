@@ -10,9 +10,8 @@ export default function SalesProcess() {
     <motion.section
       id="sales-process"
       variants={staggerContainer(0.05, 0.06)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
+      initial="show"
+      animate="show"
       className="section"
     >
       <motion.h2 variants={fadeUp} className="h2">
