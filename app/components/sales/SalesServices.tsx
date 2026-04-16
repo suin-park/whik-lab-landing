@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeUp } from "../motionPresets";
 import { salesServices } from "../../data/salesPageContent";
+import SalesStructureCard from "./SalesStructureCard";
+import { LaunchMock, PageMock, VideoMock, VisualMock } from "./SalesStructureVisuals";
 
 export default function SalesServices() {
+  const visuals = [<PageMock key="page" />, <VideoMock key="video" />, <VisualMock key="visual" />, <LaunchMock key="launch" />];
   return (
     <motion.section
       id="sales-services"
@@ -17,21 +20,13 @@ export default function SalesServices() {
       <motion.h2 variants={fadeUp} className="h2">
         {salesServices.title}
       </motion.h2>
-      <motion.p variants={fadeUp} className="sub mt-3 max-w-3xl leading-relaxed">
-        {salesServices.intro}
+      <motion.p variants={fadeUp} className="sub mt-2 text-sm">
+        {salesServices.sub}
       </motion.p>
 
-      <div className="mt-8 grid sm:grid-cols-2 gap-5">
-        {salesServices.cards.map((card, index) => (
-          <motion.article key={card.title} variants={fadeUp} className="card-ring p-5 h-full">
-            <div className="flex items-start gap-3">
-              <span className="step-badge text-sm shrink-0">{index + 1}</span>
-              <div>
-                <h3 className="text-lg font-semibold">{card.title}</h3>
-                <p className="sub text-sm mt-2 leading-relaxed">{card.desc}</p>
-              </div>
-            </div>
-          </motion.article>
+      <div className="mt-7 grid sm:grid-cols-2 gap-5">
+        {salesServices.modules.map((m, i) => (
+          <SalesStructureCard key={m.label} label={m.label} title={m.title} sub={m.sub} visual={visuals[i]} />
         ))}
       </div>
     </motion.section>

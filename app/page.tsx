@@ -9,6 +9,7 @@ import VideoModal from "./components/VideoModal";
 import QuoteChatModal from "./components/QuoteChatModal";
 import ImageCarouselModal from "./components/ImageCarouselModal";
 import ContactConsultSection from "./components/ContactConsultSection";
+import LandingHero from "./components/LandingHero";
 
 export default function Page() {
   const [open, setOpen] = useState(false);
@@ -89,96 +90,7 @@ export default function Page() {
       </header>
 
       {/* Hero */}
-      <motion.section
-        variants={staggerContainer(0.05, 0.08)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        className="section pt-2 md:pt-20 pb-14 md:pb-20 grid md:grid-cols-2 gap-10 items-center"
-      >
-        <div className="space-y-7">
-          <motion.h1 variants={fadeUp} className="text-4xl md:text-6xl font-semibold leading-relaxed space-y-1">
-            <span className="block">AI 서비스,</span>
-            <span className="block">빠르게 검증하고</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-fuchsia-300">
-              시작하세요
-            </span>
-          </motion.h1>
-
-          <motion.p variants={fadeUpSlow} className="sub max-w-xl text-base">
-            챗봇, 자동화, 3D, 콘텐츠 제작까지. 필요한 핵심 기능부터 빠르게 구현합니다.
-          </motion.p>
-          <motion.div variants={fadeUpSlow} className="flex gap-3">
-            <a href="#contact" className="btn-primary">무료 컨설팅 신청</a>
-            <button type="button" onClick={()=>setChatOpen(true)} className="btn-ghost" aria-label="AI 견적 상담 챗봇 열기">
-              AI 상담 챗봇
-            </button>
-          </motion.div>
-
-          {/* 신뢰 라인 */}
-          <motion.div variants={fadeUpSlow} className="flex items-center gap-3 pt-3 text-xs text-neutral-400">
-            <div className="h-px w-10 bg-white/20" /> Made with Whik Lab
-          </motion.div>
-        </div>
-
-        {/* 3D Locker 카드 */}
-        <motion.a
-          href="https://3d-locker.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          variants={fadeUpSlow}
-          className="card p-0 overflow-hidden group block cursor-pointer"
-          {...hoverLift}
-        >
-          {/* 이미지 영역 */}
-          <div className="relative w-full aspect-[16/9] overflow-hidden">
-            <Image
-              src="/3d-thumb2.png"
-              alt="3D Locker"
-              fill
-              className="object-cover object-left-top transition-transform duration-700 group-hover:scale-110"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
-          
-          {/* 정보 영역 */}
-          <div className="p-6 md:p-8 space-y-4">
-            {/* 상단: 로고와 배지 */}
-            <div className="flex items-center justify-between">
-              <div className="relative w-32 h-8 md:w-36 md:h-9">
-                <Image
-                  src="/logo_white.svg"
-                  alt="3D Locker"
-                  fill
-                  className="object-contain object-left"
-                  priority
-                />
-              </div>
-              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-300/10 border border-sky-300/20">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-300 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-300"></span>
-                </span>
-                <span className="text-xs md:text-sm font-medium text-sky-300">공식 오픈</span>
-              </div>
-            </div>
-            
-            {/* 제목과 설명 */}
-            <div className="space-y-2">
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold leading-tight">
-                제품 사진 한 장으로 시작하는
-                <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-fuchsia-300">완전한 3D 워크플로우</span>
-              </h3>
-              <p className="text-sm md:text-base text-neutral-400 leading-relaxed">
-                3D 생성부터 AR·프린팅까지 한 번에 연결
-              </p>
-            </div>
-          </div>
-        </motion.a>
-      </motion.section>
+      <LandingHero onOpenChat={() => setChatOpen(true)} />
 
       {/* Problems */}
       <motion.section

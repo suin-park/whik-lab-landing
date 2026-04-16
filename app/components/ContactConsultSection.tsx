@@ -9,6 +9,7 @@ export type ContactConsultSectionProps = {
   title: string;
   subtitle: string;
   submitLabel: string;
+  tone?: "dark" | "light";
 };
 
 export default function ContactConsultSection({
@@ -16,6 +17,7 @@ export default function ContactConsultSection({
   title,
   subtitle,
   submitLabel,
+  tone = "dark",
 }: ContactConsultSectionProps) {
   const [contactLoading, setContactLoading] = useState(false);
   const [contactOk, setContactOk] = useState<null | boolean>(null);
@@ -66,42 +68,69 @@ export default function ContactConsultSection({
       id={id}
       className="section"
     >
-      <motion.div variants={fadeUp} className="card p-6">
-        <h2 className="h2">{title}</h2>
-        <p className="sub mt-1">{subtitle}</p>
+      <motion.div
+        variants={fadeUp}
+        className={
+          tone === "light"
+            ? "rounded-3xl border border-neutral-200 bg-white shadow-sm p-6 md:p-8"
+            : "card p-6"
+        }
+      >
+        <h2 className={tone === "light" ? "text-2xl md:text-3xl font-semibold text-neutral-900" : "h2"}>{title}</h2>
+        <p className={tone === "light" ? "mt-2 text-sm md:text-base text-neutral-600" : "sub mt-1"}>{subtitle}</p>
         <form className="mt-6 grid md:grid-cols-2 gap-4" onSubmit={handleContactSubmit}>
           <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" />
 
           <input
             name="name"
             placeholder="이름"
-            className="rounded-xl px-4 py-3 bg-white/5 placeholder:text-neutral-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+            className={
+              tone === "light"
+                ? "rounded-xl px-4 py-3 bg-white placeholder:text-neutral-400 border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-900/10"
+                : "rounded-xl px-4 py-3 bg-white/5 placeholder:text-neutral-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+            }
             required
             maxLength={100}
           />
           <input
             name="company"
             placeholder="회사명"
-            className="rounded-xl px-4 py-3 bg-white/5 placeholder:text-neutral-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+            className={
+              tone === "light"
+                ? "rounded-xl px-4 py-3 bg-white placeholder:text-neutral-400 border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-900/10"
+                : "rounded-xl px-4 py-3 bg-white/5 placeholder:text-neutral-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+            }
             maxLength={200}
           />
           <input
             name="email"
             type="email"
             placeholder="이메일"
-            className="rounded-xl px-4 py-3 bg-white/5 placeholder:text-neutral-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+            className={
+              tone === "light"
+                ? "rounded-xl px-4 py-3 bg-white placeholder:text-neutral-400 border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-900/10"
+                : "rounded-xl px-4 py-3 bg-white/5 placeholder:text-neutral-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+            }
             required
           />
           <input
             name="phone"
             placeholder="연락처 (선택)"
-            className="rounded-xl px-4 py-3 bg-white/5 placeholder:text-neutral-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+            className={
+              tone === "light"
+                ? "rounded-xl px-4 py-3 bg-white placeholder:text-neutral-400 border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-900/10"
+                : "rounded-xl px-4 py-3 bg-white/5 placeholder:text-neutral-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+            }
             maxLength={50}
           />
           <textarea
             name="message"
             placeholder="문의 내용"
-            className="md:col-span-2 rounded-xl px-4 py-3 bg-white/5 h-36 placeholder:text-neutral-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+            className={
+              tone === "light"
+                ? "md:col-span-2 rounded-xl px-4 py-3 bg-white h-36 placeholder:text-neutral-400 border border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-900/10"
+                : "md:col-span-2 rounded-xl px-4 py-3 bg-white/5 h-36 placeholder:text-neutral-500 border border-white/10 focus:outline-none focus:ring-2 focus:ring-purple-500/40"
+            }
             required
             maxLength={5000}
           />
@@ -110,15 +139,25 @@ export default function ContactConsultSection({
             <button
               type="submit"
               disabled={contactLoading}
-              className="btn-primary disabled:opacity-60 transition-opacity"
+              className={
+                tone === "light"
+                  ? "disabled:opacity-60 transition-opacity inline-flex items-center justify-center rounded-xl px-5 py-3 bg-neutral-900 text-white font-semibold hover:bg-neutral-800"
+                  : "btn-primary disabled:opacity-60 transition-opacity"
+              }
             >
               {contactLoading ? "전송 중..." : submitLabel}
             </button>
 
             {contactOk === true && (
-              <span className="text-emerald-400 text-sm">문의가 접수되었습니다. 확인 후 연락드리겠습니다.</span>
+              <span className={tone === "light" ? "text-emerald-700 text-sm" : "text-emerald-400 text-sm"}>
+                문의가 접수되었습니다. 확인 후 연락드리겠습니다.
+              </span>
             )}
-            {contactOk === false && <span className="text-red-400 text-sm">전송 실패: {contactError}</span>}
+            {contactOk === false && (
+              <span className={tone === "light" ? "text-red-600 text-sm" : "text-red-400 text-sm"}>
+                전송 실패: {contactError}
+              </span>
+            )}
           </div>
         </form>
       </motion.div>
