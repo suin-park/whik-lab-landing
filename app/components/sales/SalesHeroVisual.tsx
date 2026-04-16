@@ -10,6 +10,8 @@ const LANDING_PREVIEW_SRC =
   "https://bszzdeyquwfgmruvopfe.supabase.co/storage/v1/object/public/package-thumbnails/page_preview_fin.png";
 const SNS_VISUAL_SRC =
   "https://bszzdeyquwfgmruvopfe.supabase.co/storage/v1/object/public/package-thumbnails/keycut_01.png";
+const DASHBOARD_PREVIEW_SRC =
+  "https://bszzdeyquwfgmruvopfe.supabase.co/storage/v1/object/public/package-thumbnails/analysis.png";
 
 export default function SalesHeroVisual() {
   const { preview } = salesHeroContent;
@@ -50,32 +52,11 @@ export default function SalesHeroVisual() {
             </div>
           </div>
 
-          {/* 문의 연결 */}
+          {/* SNS 비주얼 */}
           <div className="rounded-2xl border border-white/10 bg-black/30 overflow-hidden flex flex-col">
             <div className="px-3 pt-3">
               <div className="text-[11px] font-semibold text-neutral-100/90">{preview.blocks[1].title}</div>
               <div className="text-[10px] text-neutral-400/80 mt-0.5">{preview.blocks[1].micro}</div>
-            </div>
-            <div className="px-3 pb-3 pt-3 flex-1">
-              <div className="h-full rounded-xl border border-white/10 bg-white/[0.03] p-3 flex flex-col justify-between">
-                <div className="flex flex-wrap gap-2">
-                  <span className="text-[10px] text-neutral-200/80 rounded-full border border-white/10 bg-black/20 px-2 py-1">
-                    카카오톡
-                  </span>
-                  <span className="text-[10px] text-neutral-200/80 rounded-full border border-white/10 bg-black/20 px-2 py-1">
-                    문의폼
-                  </span>
-                </div>
-                <div className="mt-3 h-1.5 w-full rounded bg-white/10" />
-              </div>
-            </div>
-          </div>
-
-          {/* SNS 비주얼 */}
-          <div className="rounded-2xl border border-white/10 bg-black/30 overflow-hidden flex flex-col">
-            <div className="px-3 pt-3">
-              <div className="text-[11px] font-semibold text-neutral-100/90">{preview.blocks[2].title}</div>
-              <div className="text-[10px] text-neutral-400/80 mt-0.5">{preview.blocks[2].micro}</div>
             </div>
             <div className="p-3 pt-3 flex-1">
               <div className="h-full min-h-[140px] rounded-xl border border-white/10 relative overflow-hidden bg-black/20">
@@ -89,6 +70,39 @@ export default function SalesHeroVisual() {
                 <span className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
+          </div>
+
+          {/* 판매 시작용 운영 보드 */}
+          <Link
+            href="/analysis"
+            aria-label="판매 시작용 운영 대시보드 예시 보기"
+            className="group rounded-2xl border border-white/10 bg-black/30 overflow-hidden flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300/40 hover:border-white/15 transition"
+          >
+            <div className="px-3 pt-3">
+              <div className="text-[11px] font-semibold text-neutral-100/90">{preview.blocks[2].title}</div>
+              <div className="text-[10px] text-neutral-400/80 mt-0.5">{preview.blocks[2].micro}</div>
+            </div>
+            <div className="p-3 pt-3 flex-1">
+              <div className="h-full min-h-[140px] rounded-xl border border-white/10 relative overflow-hidden bg-black/20">
+                <Image
+                  src={DASHBOARD_PREVIEW_SRC}
+                  alt="판매 시작용 운영 대시보드 예시"
+                  fill
+                  sizes="(max-width: 768px) 90vw, 260px"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.01]"
+                />
+                <span className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </div>
+          </Link>
+        </div>
+
+        <div className="pt-10">
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-center">
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-cyan-500/10 pointer-events-none" />
+            <p className="relative text-sm md:text-[15px] font-semibold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white/95 via-emerald-100/90 to-white/90">
+              판매 스타터 패키지로 빠르게 상품화해 보세요!
+            </p>
           </div>
         </div>
       </div>

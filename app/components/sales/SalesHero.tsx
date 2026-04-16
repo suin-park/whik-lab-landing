@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock, Image as ImageIcon, LayoutTemplate, Link2 } from "lucide-react";
 import { staggerContainer, fadeUp, fadeUpSlow } from "../motionPresets";
@@ -13,7 +12,11 @@ function scrollToContact() {
 
 const includeIcons = [LayoutTemplate, Link2, ImageIcon, Clock];
 
-export default function SalesHero() {
+type Props = {
+  onOpenChat: () => void;
+};
+
+export default function SalesHero({ onOpenChat }: Props) {
   const copy = salesHeroContent;
   const headlineLines = copy.headline.split("\n");
   const subLines = copy.sub.split("\n");
@@ -87,13 +90,14 @@ export default function SalesHero() {
           >
             {copy.ctaPrimary}
           </button>
-          <Link
-            href={copy.sampleHref}
+          <button
+            type="button"
+            onClick={onOpenChat}
             className="order-2 min-h-[48px] px-6 rounded-xl inline-flex items-center justify-center text-[15px] font-medium tracking-tight bg-white/[0.06] text-white/90 border border-white/10 hover:bg-white/[0.08] hover:border-white/15 transition"
-            aria-label={copy.ctaSecondary}
+            aria-label="AI 견적 상담 챗봇 열기"
           >
             {copy.ctaSecondary}
-          </Link>
+          </button>
         </motion.div>
 
         <motion.div variants={fadeUpSlow} className="pt-1 text-[11px] md:text-xs text-neutral-400/60 max-w-[30rem]">

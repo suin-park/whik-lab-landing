@@ -6,6 +6,7 @@ import ContactConsultSection from "../components/ContactConsultSection";
 import SalesPageHeader from "../components/sales/SalesPageHeader";
 import SalesHero from "../components/sales/SalesHero";
 import SalesAudience from "../components/sales/SalesAudience";
+import StarterImpactSection from "../components/sales/StarterImpactSection";
 import SalesServices from "../components/sales/SalesServices";
 import SalesProcess from "../components/sales/SalesProcess";
 import SalesPackages from "../components/sales/SalesPackages";
@@ -14,15 +15,22 @@ import { salesContact } from "../data/salesPageContent";
 
 export default function SalesPage() {
   const [chatOpen, setChatOpen] = useState(false);
+  const [chatVariant, setChatVariant] = useState<"ai" | "sales">("sales");
 
   return (
     <main className="space-y-24 md:space-y-28 pt-6">
       <SalesPageHeader />
-      <SalesHero />
+      <SalesHero
+        onOpenChat={() => {
+          setChatVariant("ai");
+          setChatOpen(true);
+        }}
+      />
       <SalesAudience />
+      <StarterImpactSection />
+      <SalesPackages />
       <SalesServices />
       <SalesProcess />
-      <SalesPackages />
       <ContactConsultSection
         title={salesContact.title}
         subtitle={salesContact.subtitle}
@@ -44,7 +52,7 @@ export default function SalesPage() {
         </div>
       </footer>
 
-      <QuoteChatModal open={chatOpen} onClose={() => setChatOpen(false)} variant="sales" />
+      <QuoteChatModal open={chatOpen} onClose={() => setChatOpen(false)} variant={chatVariant} />
     </main>
   );
 }
