@@ -18,7 +18,7 @@ export default function SalesPage() {
   return (
     <main className="space-y-24 md:space-y-28 pt-6">
       <SalesPageHeader />
-      <SalesHero onOpenChat={() => setChatOpen(true)} />
+      <SalesHero />
       <SalesAudience />
       <SalesServices />
       <SalesProcess />
