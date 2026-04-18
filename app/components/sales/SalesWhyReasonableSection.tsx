@@ -1,20 +1,28 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Layers, LayoutDashboard, Files } from "lucide-react";
 import { staggerContainer, fadeUp, fadeUpSlow } from "../motionPresets";
 
-const productShots = [
+const productShots: readonly {
+  src: string;
+  alt: string;
+  href?: string;
+  linkLabel?: string;
+}[] = [
   {
     src: "https://bszzdeyquwfgmruvopfe.supabase.co/storage/v1/object/public/package-thumbnails/3d-locker.png",
     alt: "3D Locker 서비스 대시보드 화면",
+    href: "https://3d-locker.com",
+    linkLabel: "3D Locker 공식 사이트로 이동",
   },
   {
     src: "https://bszzdeyquwfgmruvopfe.supabase.co/storage/v1/object/public/package-thumbnails/WhikStudio.png",
     alt: "Whik Studio 편집 화면",
   },
-] as const;
+];
 
 const cards = [
   {
@@ -62,16 +70,33 @@ export default function SalesWhyReasonableSection() {
             key={shot.src}
             className="overflow-hidden rounded-2xl border border-white/10 bg-black/35 shadow-[0_0_0_1px_rgba(255,255,255,0.03)]"
           >
-            <div className="relative aspect-[16/10] w-full bg-neutral-900/80">
-              <Image
-                src={shot.src}
-                alt={shot.alt}
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
-                priority={false}
-              />
-            </div>
+            {shot.href ? (
+              <Link
+                href={shot.href}
+                className="relative block aspect-[16/10] w-full cursor-pointer bg-neutral-900/80 outline-none transition-opacity hover:opacity-95 focus-visible:ring-2 focus-visible:ring-emerald-300/45 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                aria-label={shot.linkLabel ?? shot.alt}
+              >
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
+                  priority={false}
+                />
+              </Link>
+            ) : (
+              <div className="relative aspect-[16/10] w-full bg-neutral-900/80">
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
+                  priority={false}
+                />
+              </div>
+            )}
           </figure>
         ))}
       </motion.div>
