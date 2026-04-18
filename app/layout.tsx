@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import BackgroundFX from "./components/BackgroundFX";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${jakarta.className} min-h-dvh antialiased`}>
         <BackgroundFX />
         {children}
+        <Analytics />
       </body>
     </html>
   );
