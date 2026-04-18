@@ -57,10 +57,6 @@ export default function SalesHero({ onOpenChat }: Props) {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300">
               30만원
             </span>
-            <span className="text-neutral-400/90 text-[0.58rem] sm:text-[0.65rem] md:text-xs font-medium whitespace-nowrap">
-              {" "}
-              (VAT 별도)
-            </span>
             <span className="text-white/95">으로 시작하는</span>
           </span>
           {headlineLines[1] && (
