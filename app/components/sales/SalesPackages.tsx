@@ -24,7 +24,11 @@ export default function SalesPackages() {
               <div className="text-xs font-semibold uppercase tracking-wide text-emerald-300/90">{tier.name}</div>
               <div className="text-[11px] font-semibold tracking-tight rounded-full border border-emerald-300/25 bg-gradient-to-r from-emerald-500/15 via-white/[0.06] to-cyan-500/15 px-2.5 py-1 shadow-[0_0_0_1px_rgba(255,255,255,0.03),0_0_18px_rgba(16,185,129,0.08)]">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 via-teal-200 to-cyan-200">
-                  {tier.name === "Starter" ? "30만원" : tier.name === "Page + Video" ? "100만원" : "200만원"}
+                  {tier.name === "Starter"
+                    ? "30만원 (VAT 별도)"
+                    : tier.name === "Page + Video"
+                      ? "100만원 (VAT 별도)"
+                      : "200만원 (VAT 별도)"}
                 </span>
               </div>
             </div>
