@@ -6,7 +6,7 @@ import { salesHeader } from "../../data/salesPageContent";
 
 export default function SalesPageHeader() {
   return (
-    <header className="section pt-6">
+    <header className="mx-auto max-w-7xl px-5 md:px-8 pt-2 pb-2 md:pt-6 md:pb-20">
       <div
         className="h-16 md:h-18 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl
                         shadow-[0_0_0_1px_rgba(255,255,255,0.04)] px-4 md:px-6

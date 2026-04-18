@@ -19,14 +19,17 @@ export default function SalesPage() {
   const [chatVariant, setChatVariant] = useState<"ai" | "sales">("sales");
 
   return (
-    <main className="space-y-24 md:space-y-28 pt-6">
-      <SalesPageHeader />
-      <SalesHero
-        onOpenChat={() => {
-          setChatVariant("ai");
-          setChatOpen(true);
-        }}
-      />
+    <main className="pt-2 md:pt-6">
+      <div className="flex flex-col gap-3 md:gap-28">
+        <SalesPageHeader />
+        <SalesHero
+          onOpenChat={() => {
+            setChatVariant("ai");
+            setChatOpen(true);
+          }}
+        />
+      </div>
+      <div className="mt-24 md:mt-28 space-y-24 md:space-y-28">
       <SalesAudience />
       <StarterImpactSection />
       <SalesWhyReasonableSection />
@@ -53,6 +56,7 @@ export default function SalesPage() {
           </div>
         </div>
       </footer>
+      </div>
 
       <QuoteChatModal open={chatOpen} onClose={() => setChatOpen(false)} variant={chatVariant} />
     </main>

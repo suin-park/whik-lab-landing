@@ -26,16 +26,15 @@ export default function SalesHero({ onOpenChat }: Props) {
       variants={staggerContainer(0.05, 0.08)}
       initial="show"
       animate="show"
-      className="section pt-4 md:pt-12 pb-16 md:pb-20 mb-0 grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-start"
+      className="section pt-0 md:pt-12 pb-16 md:pb-20 mb-0 grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-start"
     >
       <div className="space-y-4 md:space-y-5 max-w-xl">
-        <motion.div
-          variants={fadeUp}
-          className="w-fit max-w-full rounded-2xl border-2 border-amber-400/50 bg-gradient-to-br from-amber-500/25 via-amber-600/[0.14] to-orange-500/20 px-4 py-3 md:px-5 md:py-3.5 shadow-[0_0_36px_rgba(245,158,11,0.22),inset_0_1px_0_rgba(255,255,255,0.1)]"
-        >
-          <span className="block text-[0.95rem] sm:text-base md:text-lg font-bold tracking-tight text-amber-50 leading-snug">
-            {copy.promoHighlight}
-          </span>
+        <motion.div variants={fadeUp} className="flex w-full justify-center md:justify-start">
+          <div className="w-fit max-w-full rounded-2xl border-2 border-amber-400/50 bg-gradient-to-br from-amber-500/25 via-amber-600/[0.14] to-orange-500/20 px-4 py-3 md:px-5 md:py-3.5 text-center md:text-left shadow-[0_0_36px_rgba(245,158,11,0.22),inset_0_1px_0_rgba(255,255,255,0.1)]">
+            <span className="block text-[0.95rem] sm:text-base md:text-lg font-bold tracking-tight text-amber-50 leading-snug">
+              {copy.promoHighlight}
+            </span>
+          </div>
         </motion.div>
 
         <motion.div variants={fadeUp} className="flex items-center gap-2 flex-wrap">
