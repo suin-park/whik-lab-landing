@@ -29,6 +29,15 @@ export default function SalesHero({ onOpenChat }: Props) {
       className="section pt-4 md:pt-12 pb-16 md:pb-20 mb-0 grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-start"
     >
       <div className="space-y-4 md:space-y-5 max-w-xl">
+        <motion.div
+          variants={fadeUp}
+          className="w-fit max-w-full rounded-2xl border-2 border-amber-400/50 bg-gradient-to-br from-amber-500/25 via-amber-600/[0.14] to-orange-500/20 px-4 py-3 md:px-5 md:py-3.5 shadow-[0_0_36px_rgba(245,158,11,0.22),inset_0_1px_0_rgba(255,255,255,0.1)]"
+        >
+          <span className="block text-[0.95rem] sm:text-base md:text-lg font-bold tracking-tight text-amber-50 leading-snug">
+            {copy.promoHighlight}
+          </span>
+        </motion.div>
+
         <motion.div variants={fadeUp} className="flex items-center gap-2 flex-wrap">
           {copy.badges.map((b) => (
             <span
@@ -105,7 +114,10 @@ export default function SalesHero({ onOpenChat }: Props) {
         </motion.div>
       </div>
 
-      <SalesHeroVisual />
+      {/* md+: 프로모·배지 높이만큼 내려 히어로 헤드라인 첫 줄과 시각 정렬 */}
+      <div className="w-full md:mt-[6.75rem] lg:mt-[7.25rem]">
+        <SalesHeroVisual />
+      </div>
     </motion.section>
   );
 }

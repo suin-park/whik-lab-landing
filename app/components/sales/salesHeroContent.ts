@@ -3,7 +3,8 @@
  */
 
 export const salesHeroContent = {
-  badges: ["소상공인 판매 시작용", "3영업일 제작", "Starter Package"],
+  promoHighlight: "오픈 기념 기간 한정 패키지",
+  badges: ["소상공인 판매 시작용", "3영업일 제작"],
   headline: "30만원으로 시작하는\n판매 스타터 패키지",
   sub: "페이지, 문의 연결, SNS 비주얼까지\n작게 시작할 수 있게 핵심만 빠르게 제작합니다",
   includes: [

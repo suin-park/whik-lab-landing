@@ -7,6 +7,7 @@ import SalesPageHeader from "../components/sales/SalesPageHeader";
 import SalesHero from "../components/sales/SalesHero";
 import SalesAudience from "../components/sales/SalesAudience";
 import StarterImpactSection from "../components/sales/StarterImpactSection";
+import SalesWhyReasonableSection from "../components/sales/SalesWhyReasonableSection";
 import SalesServices from "../components/sales/SalesServices";
 import SalesProcess from "../components/sales/SalesProcess";
 import SalesPackages from "../components/sales/SalesPackages";
@@ -28,6 +29,7 @@ export default function SalesPage() {
       />
       <SalesAudience />
       <StarterImpactSection />
+      <SalesWhyReasonableSection />
       <SalesPackages />
       <SalesServices />
       <SalesProcess />
